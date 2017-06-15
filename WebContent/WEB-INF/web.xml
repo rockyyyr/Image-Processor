@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+	
+    <welcome-file-list>
+        <welcome-file>welcome.jsp</welcome-file>  
+    </welcome-file-list>
+    
+    <servlet>
+        
+        <servlet-name>Uploader</servlet-name>
+        <servlet-class>com.robson.imageuploader.controller.Uploader</servlet-class>
+        
+        <init-param>
+            <param-name>FILE_DIR</param-name>
+            <param-value>home/bestevcl/tomcat/webapps/imageprocessor.ca/ROOT/temp/</param-value>
+        </init-param>
+        
+        <init-param>
+            <param-name>HOME_PAGE</param-name>
+            <param-value>welcome.jsp</param-value>
+        </init-param>
+        
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Uploader</servlet-name>
+        <url-pattern>/upload</url-pattern>
+    </servlet-mapping>
+    
+</web-app>

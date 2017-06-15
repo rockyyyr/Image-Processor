@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<File name="imageprocessor" fileName="home/bestevcl/tomcat/webapps/imageprocessor.ca/ROOT/log/debug.log" immediateFlush="true" append="true">
+			<PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} | %-30threadName  |  %-5level  |  %logger{4} - %10m%n"/>
+		</File>
+	</Appenders>
+	<Loggers>
+		<Root level="all">
+			<AppenderRef ref="imageprocessor" />
+		</Root>
+	</Loggers>
+</Configuration>

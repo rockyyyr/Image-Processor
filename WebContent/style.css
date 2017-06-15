@@ -1,0 +1,46 @@
+body {
+    font-family: sans-serif;
+    background-color: black;
+}
+
+hr {
+    margin-top: 20px;
+}
+
+input[type="submit"] {
+    margin-top: 8px;
+    height: 25px;
+}
+
+#content {
+    border-radius: 5px;
+    background-color: white;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+#header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+#file-selection {
+    margin: 0 auto;
+}
+
+.module {
+    margin-top: 20px;
+}
+
+.item {
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
