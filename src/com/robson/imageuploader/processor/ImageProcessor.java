@@ -89,20 +89,20 @@ public class ImageProcessor {
 		int[] pixelMap = img.getRGB(0, 0, width, height, null, 0, width);
 
 		int count = 0;
-		for (int pix : pixelMap) {
+		for (int pixel : pixelMap) {
 
-			Color color = new Color(pix);
+			Color color = new Color(pixel);
 
-			int x = (color.getRed() + color.getGreen() + color.getBlue()) / 3;
+			int val = (color.getRed() + color.getGreen() + color.getBlue()) / 3;
 
 			for (int i = 0; i < colorBounds.length - 1; i++) {
-				if (x >= colorBounds[i] && x < colorBounds[i + 1]) {
+				if (val >= colorBounds[i] && val < colorBounds[i + 1]) {
 					sb.append(pixels[i]);
 					break;
 				}
 			}
 
-			if (x > colorBounds[colorBounds.length - 1])
+			if (val > colorBounds[colorBounds.length - 1])
 				sb.append(WHITE_PIXEL);
 
 			if (++count == img.getWidth()) {
