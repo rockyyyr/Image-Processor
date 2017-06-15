@@ -17,7 +17,7 @@ public class ImageProcessor {
 	private int[] colorBounds;
 
 	private int COLOR_DEPTH;
-	private int THRESHOLD;
+	private int RANGE;
 	private int EXPOSURE;
 
 	private BufferedImage img;
@@ -73,7 +73,7 @@ public class ImageProcessor {
 	 * Any time settings are changed, this method must be called
 	 */
 	public void applySettings() {
-		setThreshold();
+		setRange();
 		buildColorRange();
 	}
 
@@ -81,7 +81,7 @@ public class ImageProcessor {
 	 * Process the image
 	 */
 	public String process() {
-		StringBuilder sb = new StringBuilder();
+		StringBuilder render = new StringBuilder();
 
 		int width = img.getWidth();
 		int height = img.getHeight();
@@ -97,27 +97,27 @@ public class ImageProcessor {
 
 			for (int i = 0; i < colorBounds.length - 1; i++) {
 				if (val >= colorBounds[i] && val < colorBounds[i + 1]) {
-					sb.append(pixels[i]);
+					render.append(pixels[i]);
 					break;
 				}
 			}
 
 			if (val > colorBounds[colorBounds.length - 1])
-				sb.append(WHITE_PIXEL);
+				render.append(WHITE_PIXEL);
 
 			if (++count == img.getWidth()) {
-				sb.append(NEW_LINE);
+				render.append(NEW_LINE);
 				count = 0;
 			}
 		}
-		return sb.toString();
+		return render.toString();
 	}
 
 	/**
-	 * Set the threshold. Must be called after the color depth has been changed
+	 * Set the color Range for each pixel. Must be called after the color depth has been changed
 	 */
-	private void setThreshold() {
-		THRESHOLD = MAX_RGB / COLOR_DEPTH;
+	private void setRange() {
+		RANGE = MAX_RGB / COLOR_DEPTH;
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class ImageProcessor {
 		colorBounds = new int[COLOR_DEPTH + EXPOSURE];
 
 		for (int i = 0; i < colorBounds.length; i++) {
-			colorBounds[i] = THRESHOLD * i;
+			colorBounds[i] = RANGE * i;
 		}
 	}
 }
