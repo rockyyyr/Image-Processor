@@ -82,8 +82,6 @@ public class ImageProcessor {
 	 */
 	public String process() {
 
-		long start = System.currentTimeMillis();
-
 		StringBuilder render = new StringBuilder();
 
 		int width = img.getWidth();
@@ -115,7 +113,6 @@ public class ImageProcessor {
 				count = 0;
 			}
 		}
-		System.out.println("time: " + (System.currentTimeMillis() - start));
 		return render.toString();
 	}
 
