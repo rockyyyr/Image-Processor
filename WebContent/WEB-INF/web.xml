@@ -16,7 +16,7 @@
         
         <init-param>
             <param-name>FILE_DIR</param-name>
-            <param-value>D:/Pictures/Test/</param-value>
+            <param-value>home/bestevcl/tomcat/webapps/imageprocessor.ca/ROOT/temp/</param-value>
         </init-param>
         
         <init-param>
