@@ -12,7 +12,7 @@
     <servlet>
         
         <servlet-name>Uploader</servlet-name>
-        <servlet-class>com.robson.imageuploader.controller.Uploader</servlet-class>
+        <servlet-class>com.robson.imageprocessor.controller.Uploader</servlet-class>
         
         <init-param>
             <param-name>FILE_DIR</param-name>

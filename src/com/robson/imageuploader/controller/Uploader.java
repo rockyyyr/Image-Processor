@@ -66,7 +66,7 @@ public class Uploader extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.info("**********Link Uploaded");
+		log.info("**********Link Uploaded**********");
 
 		String url = request.getParameter(URL);
 
@@ -92,7 +92,7 @@ public class Uploader extends HttpServlet {
 			} catch (MalformedURLException e) {
 				sendUrlErrorResponse(response, url);
 			} finally {
-				log.info("End of Session**********");
+				log.info("**********End of Session**********");
 			}
 
 		}
@@ -103,7 +103,7 @@ public class Uploader extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.info("**********File Uploaded");
+		log.info("**********File Uploaded**********");
 
 		Part filePart = request.getPart("file");
 
@@ -132,7 +132,7 @@ public class Uploader extends HttpServlet {
 			} catch (InvalidFormatException e) {
 				sendFileErrorResponse(response);
 			} finally {
-				log.info("End of Session**********");
+				log.info("**********End of Session**********");
 			}
 
 		}
