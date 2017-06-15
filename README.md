@@ -1,5 +1,5 @@
 # Image-Processor
-###### Display images by replacing pixels with UTF-8 Characters
+## Display images by replacing pixels with UTF-8 Characters
 
 ![alt text](https://user-images.githubusercontent.com/16550024/27202155-4bd18958-51d5-11e7-9146-b134b9371f50.png)
 
@@ -32,19 +32,21 @@ int[] pixelMap = img.getRGB(0, 0, width, height, null, 0, width);
     
 Since the rendered image wont be using color, an average of red, blue and green is used to determine which grouping each pixel is assigned:
 ```java 
+int val;
+Color color;
+
 int count = 0;
 for (int pixel : pixelMap) {
-  Color color = new Color(pixel);
-            
-	int val = (color.getRed() + color.getGreen() + color.getBlue()) / 3;
+  	color = new Color(pixel); 
+	val = (color.getRed() + color.getGreen() + color.getBlue()) / 3;
     ....
 ```    
 Then iterate through the colorBounds and check if each pixel is in that particular range. If it is, add the corresponding character
 from the pixels char array and break out of the loop.
 ```java
 for (int i = 0; i < colorBounds.length - 1; i++) {
-  if (val >= colorBounds[i] && val < colorBounds[i + 1]) {
-	  sb.append(pixels[i]);
+	if (val >= colorBounds[i] && val < colorBounds[i + 1]) {
+		sb.append(pixels[i]);
 		break;
 	}
 }
@@ -52,12 +54,12 @@ for (int i = 0; i < colorBounds.length - 1; i++) {
 Check for any white pixels:
 ```java
 if (val > colorBounds[colorBounds.length - 1])
-  sb.append(WHITE_PIXEL);
+	sb.append(WHITE_PIXEL);
 ```                       
 Check to see if iteration of the row is complete. If it is, add a new line character and reset the counter:
 ```java
 if (++count == img.getWidth()) {
-  sb.append(NEW_LINE);
+	sb.append(NEW_LINE);
 	count = 0;
 }
 ```         
