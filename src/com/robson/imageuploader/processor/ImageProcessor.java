@@ -14,7 +14,7 @@ public class ImageProcessor {
 	private static final String WHITE_PIXEL = "&nbsp";
 
 	private char[] pixels;
-	private int[] colorBounds;
+	private int[] colorRange;
 
 	private int COLOR_DEPTH;
 	private int RANGE;
@@ -81,28 +81,33 @@ public class ImageProcessor {
 	 * Process the image
 	 */
 	public String process() {
+
+		long start = System.currentTimeMillis();
+
 		StringBuilder render = new StringBuilder();
 
 		int width = img.getWidth();
 		int height = img.getHeight();
-
 		int[] pixelMap = img.getRGB(0, 0, width, height, null, 0, width);
+
+		int val;
+		Color color;
 
 		int count = 0;
 		for (int pixel : pixelMap) {
 
-			Color color = new Color(pixel);
+			color = new Color(pixel);
 
-			int val = (color.getRed() + color.getGreen() + color.getBlue()) / 3;
+			val = (color.getRed() + color.getGreen() + color.getBlue()) / 3;
 
-			for (int i = 0; i < colorBounds.length - 1; i++) {
-				if (val >= colorBounds[i] && val < colorBounds[i + 1]) {
+			for (int i = 0; i < colorRange.length - 1; i++) {
+				if (val >= colorRange[i] && val < colorRange[i + 1]) {
 					render.append(pixels[i]);
 					break;
 				}
 			}
 
-			if (val > colorBounds[colorBounds.length - 1])
+			if (val > colorRange[colorRange.length - 1])
 				render.append(WHITE_PIXEL);
 
 			if (++count == img.getWidth()) {
@@ -110,6 +115,7 @@ public class ImageProcessor {
 				count = 0;
 			}
 		}
+		System.out.println("time: " + (System.currentTimeMillis() - start));
 		return render.toString();
 	}
 
@@ -124,10 +130,10 @@ public class ImageProcessor {
 	 * Build array that holds the values for determining each color's range
 	 */
 	private void buildColorRange() {
-		colorBounds = new int[COLOR_DEPTH + EXPOSURE];
+		colorRange = new int[COLOR_DEPTH + EXPOSURE];
 
-		for (int i = 0; i < colorBounds.length; i++) {
-			colorBounds[i] = RANGE * i;
+		for (int i = 0; i < colorRange.length; i++) {
+			colorRange[i] = RANGE * i;
 		}
 	}
 }

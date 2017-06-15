@@ -28,7 +28,7 @@ public class ImageParser {
 	 * Create an image parser with a pixel size of 1
 	 */
 	public ImageParser() {
-		init();
+		initMaxImageSize();
 		PIXEL_SIZE = DEFAULT_PIXEL_SIZE;
 	}
 
@@ -37,7 +37,7 @@ public class ImageParser {
 	 * If the pixel size is not in range then the default of 1 will be used
 	 */
 	public ImageParser(int pixelSize) {
-		init();
+		initMaxImageSize();
 		if (pixelSize > 0)
 			PIXEL_SIZE = pixelSize;
 		else
@@ -66,7 +66,7 @@ public class ImageParser {
 		return analyzeImageSize(getImageFromFile(file));
 	}
 
-	private void init() {
+	private void initMaxImageSize() {
 		prop = new Property();
 		MAX_IMAGE_SIZE = Integer.parseInt(prop.get("max_image_size"));
 	}

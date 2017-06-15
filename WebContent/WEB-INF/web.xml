@@ -12,11 +12,11 @@
     <servlet>
         
         <servlet-name>Uploader</servlet-name>
-        <servlet-class>com.robson.imageprocessor.controller.Uploader</servlet-class>
+        <servlet-class>com.robson.imageuploader.controller.Uploader</servlet-class>
         
         <init-param>
             <param-name>FILE_DIR</param-name>
-            <param-value>home/bestevcl/tomcat/webapps/imageprocessor.ca/ROOT/temp/</param-value>
+            <param-value>D:/Pictures/Test/</param-value>
         </init-param>
         
         <init-param>

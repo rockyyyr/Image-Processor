@@ -162,6 +162,9 @@ public class Uploader extends HttpServlet {
 		out.close();
 	}
 
+	/*
+	 * Respond with URL error message
+	 */
 	private void sendUrlErrorResponse(HttpServletResponse response, String url) throws IOException {
 		PrintWriter out = response.getWriter();
 
@@ -174,6 +177,9 @@ public class Uploader extends HttpServlet {
 		out.close();
 	}
 
+	/*
+	 * Respond with File type error message
+	 */
 	private void sendFileErrorResponse(HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
 
@@ -186,6 +192,19 @@ public class Uploader extends HttpServlet {
 		out.close();
 	}
 
+	/*
+	 * Set the pixel size and letter spacing depending on client's device
+	 */
+	private void setPixelSize(int size, HttpServletRequest request) {
+		if (requestFromMobile(request))
+			setMobilePixelSize(size);
+		else
+			setDesktopPixelSize(size);
+	}
+
+	/*
+	 * 
+	 */
 	private void setMobilePixelSize(int size) {
 		FONT_SIZE = size + "px";
 		LETTER_SPACE = size;
@@ -196,13 +215,6 @@ public class Uploader extends HttpServlet {
 		FONT_SIZE = size + "px";
 		LETTER_SPACE = (double) size / 2;
 		log.info("Using desktop letter spacing: " + LETTER_SPACE);
-	}
-
-	private void setPixelSize(int size, HttpServletRequest request) {
-		if (requestFromMobile(request))
-			setMobilePixelSize(size);
-		else
-			setDesktopPixelSize(size);
 	}
 
 	private boolean requestFromMobile(HttpServletRequest request) {
