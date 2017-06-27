@@ -1,5 +1,5 @@
 # Image-Processor
-## Display images by replacing pixels with UTF-8 Characters
+## Display images by replacing pixels with UTF-16 Characters
 
 ![alt text](https://user-images.githubusercontent.com/16550024/27202155-4bd18958-51d5-11e7-9146-b134b9371f50.png)
 
