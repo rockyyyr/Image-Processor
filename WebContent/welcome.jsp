@@ -6,11 +6,11 @@ pageEncoding="ISO-8859-1"%>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <link href="style.css" type="text/css" rel="stylesheet">
-    <title>UTF-8 Image Processor</title>
+    <title>Unicode Image Processor</title>
 </head>
 <body>
 <div id="header">
-    <h1>UTF-8 Image Processor</h1>
+    <h1>Unicode Image Processor</h1>
 </div>
 <div id="content">
 
